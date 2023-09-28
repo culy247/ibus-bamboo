@@ -62,8 +62,10 @@ install: build
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/ibus-$(engine_name)
 	mkdir -p $(DESTDIR)$(ibus_dir)/component/
 	mkdir -p $(DESTDIR)$(PREFIX)/share/applications/
+	mkdir -p $(DESTDIR)$(PREFIX)/share/icons/
 
 	cp -R -f icons data $(DESTDIR)$(engine_dir)
+	cp -R -f icons $(DESTDIR)$(PREFIX)/share/icons/$(engine_name)
 	cp -f $(ibus_e_name) $(DESTDIR)$(PREFIX)/lib/ibus-${engine_name}/
 	cp -f $(keyboard_shortcut_editor) $(DESTDIR)$(PREFIX)/lib/ibus-$(engine_name)/
 	cp -f $(macro_editor) $(DESTDIR)$(PREFIX)/lib/ibus-$(engine_name)/
@@ -76,6 +78,7 @@ uninstall:
 	sudo rm -rf $(DESTDIR)$(PREFIX)/lib/ibus-$(engine_name)/
 	sudo rm -f $(DESTDIR)$(ibus_dir)/component/$(engine_name).xml
 	sudo rm -rf $(DESTDIR)$(PREFIX)/share/applications/$(engine_gui_name)
+	sudo rm -rf $(DESTDIR)$(PREFIX)/share/icons/$(engine_name)
 
 
 src: clean
